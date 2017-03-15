@@ -10,9 +10,13 @@
 }
 .header-black{
     color: #dcdcff;
+    padding: 5px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
     color: #fff;
     background-color: transparent;
+}
+.form-control{
+    margin-top: 8px;
 }

@@ -1,9 +1,13 @@
 angular.module("app").config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
     $routeProvider
-        .when("/", {
+        .when("/products", {
             templateUrl: "app/product/product.template.html",
             controller: "productController"
         })
-        .otherwise("/");
+        .when("/products/:categoryID", {
+            templateUrl: "app/product/productByCategory.template.html",
+            controller: "productByCategoryController"
+        })
+        .otherwise("/products");
     $locationProvider.html5Mode(true);
 }]);

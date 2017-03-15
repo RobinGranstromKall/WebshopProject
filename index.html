@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <base href="/">
+    <base href="/products">
     <title>Gunhilds Webshop</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
@@ -29,6 +29,7 @@
     <script src="app/category/category.service.js"></script>
     <script src="app/category/category.controller.js"></script>
 
+    <script src="app/product/productByCategory.controller.js"></script>
 </head>
 <body ng-app="app">
 <nav class="navbar navbar-custom navbar-fixed-top" ng-controller="categoryController">
@@ -39,9 +40,11 @@
         <ul class="nav navbar-nav">
             <li><a class="header-black" href="/">Home</a></li>
             <li>
-                <select ng-model="selectedCategory" ng-options="name for name in categories"></select>
+                <select class="form-control" ng-model="selectedCategory" ng-options="category.name for category in category" ng-change="filterByCategory(selectedCategory.id)">
+                    <option value="" disabled selected hidden>Categories</option>
+                </select>
             </li>
-            <li><a class="header-black" href="#">Page 2</a></li>
+            <li><input ng-controller="productController" class="form-control" type="text" placeholder="Search..." ng-model="searchQuery"></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a class="header-black" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
