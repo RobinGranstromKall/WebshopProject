@@ -1,0 +1,18 @@
+.template{
+    width: 50px;
+}
+.navbar-custom{
+    background-color: #515151;
+    border-color: #8c8c8c;
+}
+.navbar-brand{
+    color: #dcdcff;
+}
+.header-black{
+    color: #dcdcff;
+}
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: #fff;
+    background-color: transparent;
+}
