@@ -6,6 +6,7 @@
     <title>Gunhilds Webshop</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
+
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
@@ -17,9 +18,9 @@
     <script src="app/app.config.js"></script>
     <script src="app/app.controller.js"></script>
 
-    <script src="app/login/login.module.js"></script>
-    <script src="app/login/login.service.js"></script>
-    <script src="app/login/login.controller.js"></script>
+    <script src="app/user/login.module.js"></script>
+    <script src="app/user/login.service.js"></script>
+    <script src="app/user/login.controller.js"></script>
 
     <script src="app/product/product.module.js"></script>
     <script src="app/product/product.service.js"></script>
@@ -29,20 +30,20 @@
     <script src="app/category/category.service.js"></script>
     <script src="app/category/category.controller.js"></script>
 
-    <script src="app/product/productByCategory.controller.js"></script>
 </head>
 <body ng-app="app">
-<nav class="navbar navbar-custom navbar-fixed-top" ng-controller="categoryController">
+<nav class="navbar navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Gunhilds Webshop</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a class="header-black" href="/">Home</a></li>
-            <li>
-                <select class="form-control" ng-model="selectedCategory" ng-options="category.name for category in category" ng-change="filterByCategory(selectedCategory.id)">
-                    <option value="" disabled selected hidden>Categories</option>
-                </select>
+            <li><a class="header-black" ng-click="chosenCategory(0)" href="/">Home</a></li>
+            <li uib-dropdown ng-controller="categoryController">
+                <a uib-dropdown-toggle>Categories<span class="caret"></span></a>
+                <ul uib-dropdown-menu uib-collapse="!isCollapsed" class="dropdown-menu" >
+                    <li ng-repeat="category in categories" id="{{category.id}}" ng-click="chosenCategory(category)"  class="list-group-item"><a>{{category.name}}</a></li>
+                </ul>
             </li>
             <li><input ng-controller="productController" class="form-control" type="text" placeholder="Search..." ng-model="searchQuery"></li>
         </ul>

@@ -1,5 +1,6 @@
 angular.module("product").
-controller("productController", ["$scope", "productService", "categoryService", function($scope, productService, categoryService) {
+controller("productController", ["$scope", "$filter", "productService", "categoryService",
+    function($scope, $filter, productService, categoryService) {
     categoryService.getCategories().then(function (response) {
         var categories = response.data;
         productService.getProducts().then(function (response) {
@@ -14,4 +15,9 @@ controller("productController", ["$scope", "productService", "categoryService", 
             $scope.products = products;
         });
     });
+        $scope.chosenCategory = function (category) {
+            //$location.url("/");
+            $scope.categoryFilter = category.id;
+            console.log("cat" + category.id)
+        };
 }]);

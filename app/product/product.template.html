@@ -1,5 +1,4 @@
 <div class="col-md-8 col-md-offset-2">
-    <input ng-controller="productController" class="form-control" type="text" placeholder="Search..." ng-model="searchQuery">z
     <table class="table table-stripped ">
         <thead>
         <tr>
@@ -10,8 +9,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="product in products | filter:searchQuery">
-            <td><img class="template" ng-src="{{product.imageUrl}}" alt="{{product.name}}"></td>
+        <tr ng-repeat="product in products |  filter: {categoryId:categoryFilter} | filter: searchQuery">
+            <td><img class="template" ng-src="{{product.imageUrl}}" alt="{{product.description}}"></td>
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
             <td>{{product.price}}</td>
