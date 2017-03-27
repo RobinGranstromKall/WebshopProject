@@ -4,17 +4,21 @@
         <tr>
             <th>Picture</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Price</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="product in products |  filter: {categoryId:categoryFilter} | filter: searchQuery">
-            <td><img class="template" ng-src="{{product.imageUrl}}" alt="{{product.description}}"></td>
-            <td>{{product.name}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.price}}</td>
-            <td><button ng-click="addToCart(product.id)">Add to cart</button></td>
+        <tr ng-repeat="product in products | filter: searchQuery | filter: {categoryId:categoryFilter}">
+            <div>
+                <td><img class="template"   ng-src="{{product.imageUrl}}" alt="{{product.name}}"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td ng-controller="cartController">
+                    <button ng-hide="inStock(product.unitsInStock)"><span class="glyphicon glyphicon-warning-sign"></span>Out of stock</button>
+                    <button ng-click="addToCart(product)" ng-show="inStock(product.unitsInStock)"><span class="glyphicon glyphicon-plus"></span>Add to cart</button>
+                </td>
+                <td><button ng-click="showDetail(product.id)"><span class="glyphicon glyphicon-info-sign"></span>more info...</button></td>
+            </div>
         </tr>
         </tbody>
     </table>

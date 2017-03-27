@@ -1,1 +1,1 @@
-angular.module("app", ["ui.bootstrap", "ngRoute", "product", "category", "login"]);
+angular.module("app", ["ui.bootstrap", "ngRoute", "product", "category", "login", "cart"]);

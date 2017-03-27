@@ -1,0 +1,21 @@
+<br><br><div class="col-md-6 col-md-offset-3">
+
+
+        <div class="col-md-offset-3">
+            <strong>{{product.name}}</strong>
+        </div>
+        <div class="col-md-offset-3">
+            <p><img ng-src="{{product.imageUrl}}" alt="{{product.name}}" style="width: 400px"></p>
+        </div>
+        <div>
+            <p>{{product.description}}</p>
+        </div>
+        <div>
+            <strong>Price: {{product.price}}</strong><br>
+            <p ng-controller="cartController">
+                <button ng-hide="inStock()"><span class="glyphicon glyphicon-warning-sign"></span>Out of stock</button>
+                <button ng-click="addToCart(product)" ng-show="inStock()"><span class="glyphicon glyphicon-plus"></span>Add to cart</button>
+            </p>
+        </div>
+        </tbody>
+</div>

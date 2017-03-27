@@ -1,0 +1,38 @@
+<div class="col-md-8 col-md-offset-2" ng-controller="cartController">
+    <table class="table table-stripped ">
+        <h1>Products in cart</h1>
+        <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price/st</th>
+            <th>Amount</th>
+            <th>TotalPrice</th>
+        </tr>
+        </thead>
+        <p>{{buyText}}</p>
+        <tbody>
+        <tr ng-repeat="product in cart">
+            <td><img class="template" ng-src="{{product.imageUrl}}" alt="{{product.name}}"></td>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.amount}}</td>
+            <td>{{product.totalPrice}}</td>
+            <td>
+                <input type="number" min="1" max="{{product.oUnitsInStock}}" value="{{product.amount}}" ng-model="inputAmount" style="width: 40px">
+                <button ng-click="setProductAmount(product, inputAmount)"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button ng-click="removeProduct(product)"><span class="glyphicon glyphicon-remove-circle"></span></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-show="cartExist()">
+    <p>Total Amount {{totalAmount()}}Total value {{totalValue()}}</p>
+        <button ng-click="sendOrder()"><span class="glyphicon glyphicon-send"></span>Send Order</button>
+    </div>
+    <div ng-if="!cartExist()">
+        <p>The cart is empty.</p>
+    </div>
+</div>

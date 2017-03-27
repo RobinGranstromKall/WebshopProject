@@ -15,8 +15,36 @@
 .navbar-brand:hover,
 .navbar-brand:focus {
     color: #fff;
-    background-color: transparent;
+    background-color: #515151;
 }
 .form-control{
     margin-top: 8px;
+}
+
+.list-group-item{
+    background-color: #515151 ;
+    border-color: #515151;
+}
+.dropdown-menu.collapse{
+    background-color: #515151 ;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: transparent;
+}
+.btn-info,
+.btn-info:focus,
+.btn-info.focus,
+.btn-info:hover,
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info,
+.btn-info:active:hover,
+.btn-info.active:hover,
+.open > .dropdown-toggle.btn-info:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.open > .dropdown-toggle.btn-info:focus{
+    color: #fff;
+    background-color: #515151;
+    border-color: #515151;
 }

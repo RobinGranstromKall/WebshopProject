@@ -1,0 +1,28 @@
+<div class="col-md-8 col-md-offset-2">
+    <table class="table table-stripped " ng-controller="cartController">
+        <h1>Order Complete!</h1>
+        <p>The order has successfully been placed with these items</p>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price/st</th>
+            <th>Amount</th>
+            <th>TotalPrice</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in cartComplete">
+            <td><a href="{{product.imageUrl}}" target="_blank">{{product.name}}</a></td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.amount}}</td>
+            <td>{{product.totalPrice}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+    <p>Total Amount {{cartAmount()}}</p><p>Total value {{totalValue()}}</p>
+        <button><a  href="/products"><span class="glyphicon glyphicon-ok-circle"></span>Ok</a></button>
+    </div>
+</div>

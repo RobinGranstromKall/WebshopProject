@@ -25,31 +25,50 @@
     <script src="app/product/product.module.js"></script>
     <script src="app/product/product.service.js"></script>
     <script src="app/product/product.controller.js"></script>
+    <script src="app/product/productDetail.controller.js"></script>
 
     <script src="app/category/category.module.js"></script>
     <script src="app/category/category.service.js"></script>
     <script src="app/category/category.controller.js"></script>
 
+    <script src="app/cart/cart.module.js"></script>
+    <script src="app/cart/cart.service.js"></script>
+    <script src="app/cart/cart.controller.js"></script>
+
+    <script src="app/user/login.module.js"></script>
+    <script src="app/user/login.service.js"></script>
+    <script src="app/user/login.controller.js"></script>
+
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller="productController">
 <nav class="navbar navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Gunhilds Webshop</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a class="header-black" ng-click="chosenCategory(0)" href="/">Home</a></li>
+            <li><a class="header-black navbar-brand" ng-click="filterCategory(0)" href="/">Home</a></li>
             <li uib-dropdown ng-controller="categoryController">
-                <a uib-dropdown-toggle>Categories<span class="caret"></span></a>
-                <ul uib-dropdown-menu uib-collapse="!isCollapsed" class="dropdown-menu" >
-                    <li ng-repeat="category in categories" id="{{category.id}}" ng-click="chosenCategory(category)"  class="list-group-item"><a>{{category.name}}</a></li>
+                <a class="header-black navbar-brand" uib-dropdown-toggle>Categories<span class="caret"></span></a>
+                <ul uib-dropdown-menu uib-collapse="!isCollapsed" class="dropdown-menu">
+                    <li ng-repeat="category in categories" id="{{category.id}}" ng-click="filterCategory(category)"
+                        class="list-group-item"><a>{{category.name}}</a></li>
                 </ul>
             </li>
-            <li><input ng-controller="productController" class="form-control" type="text" placeholder="Search..." ng-model="searchQuery"></li>
+            <li>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input ng-model="searchQuery" type="text" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+            </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a class="header-black" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a class="header-black" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <ul class="nav navbar-nav navbar-right" ng-controller="loginController">
+            <li><a class="header-black" href="/cart" ng-controller="cartController"><span class="glyphicon glyphicon-shopping-cart"></span>({{totalAmount()}})</a></li>
+            <li ng-hide="isLoggedIn()"><a class="header-black" href="/createUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li ng-show="isLoggedIn()"><a class="header-black"><span class="glyphicon glyphicon-user"></span>Welcome {{fullName()}}</a></li>
+            <li ng-hide="isLoggedIn()"><a class="header-black" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li ng-show="isLoggedIn()"><a class="header-black" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>

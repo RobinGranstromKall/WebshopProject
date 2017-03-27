@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+
+            <section id="Contact_details" class="text-center">
+                <p class="alert-success">{{userSuccess}}</p><br>
+                <form name="loginForm" class="form-group" novalidate>
+                    <br><h4><strong>Logga in</strong></h4><br>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" ng-model="user.email"><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" placeholder="Password"
+                               ng-model="user.password"><br>
+                    </div>
+                    <p class="alert-danger">{{loginText}}</p><br>
+                    <a class="btn btn-info" role="button" ng-click="login()"><span class="glyphicon glyphicon-log-in">  Logga in</span></a>
+                    <a class="btn btn-info" href="/"><span class="glyphicon glyphicon-remove-circle">  Avbryt</span></a><br><br><br>
+                    <a class="btn btn-info" role="button" href="/createUser"><span class="glyphicon glyphicon-user"></span>Create New Account</a><br><br>
+
+                </form>
+            </section>
+
+        </div>
+    </div>
+</div>
